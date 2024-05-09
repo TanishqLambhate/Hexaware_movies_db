@@ -1,6 +1,7 @@
 # Setup
- 
- 
+
+## open powershell terminal 
+
 ## Virtual ENV
  
 ```bash
