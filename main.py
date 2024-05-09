@@ -1,0 +1,1 @@
+print("Welcome Tanishq to the movies app")
