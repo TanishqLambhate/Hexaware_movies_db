@@ -47,10 +47,10 @@
 # print("Welcome Tanishq to the movies app")
 
 import pyodbc
-# from Entity.movie import Movie
-# from DAO.movie_service import MovieService
+from Entity.movie import Movie
+from DAO.movie_service import MovieService
  
-server_name = "DESKTOP-DLFEC7O\SQLEXPRESS"
+server_name = "LAPTOP-ET544B99"
 database_name = "HexawareMoviesDB"
  
  
@@ -64,53 +64,16 @@ conn_str = (
  
 print(conn_str)
 conn = pyodbc.connect(conn_str)
-cursor = conn.cursor()
-cursor.execute("Select 1")
-print("Database connection is successful 🎊")
+# cursor = conn.cursor()
+# cursor.execute("Select 1")
+# print("Database connection is successful 🎊")
  
  
 # Service - Function that talk to DB | Layer that interacts with DB
  
  
 # Encapsulation
-class MovieService:
-    def read_movies(self):
-        cursor.execute("Select * from Movies")
-        # movies = cursor.fetchall() # Get all data
-        # for movie in movies:
-        #     print(movie)
- 
-        # Get data one row at a time
-        for row in cursor:
-            print(row)
- 
-    # Task 1
-    # Get the data from the user
-    # Clue: Use arguments
-    def create_movie(self, movie):
-        cursor.execute(
-            "INSERT INTO Movies (Title, Year, DirectorId) VALUES (?, ?, ?)",
-            (movie.title, movie.year, movie.director_id),
-        )
-        conn.commit()  # Permanent storing | If no commit then no data
- 
-    def update_movie(self, movie, movie_id):
-        cursor.execute(
-            """
-            Update Movies
-            Set Title = ?, Year = ?, DirectorId = ?
-            where MovieId = ?
-            """,
-            (movie.title, movie.year, movie.director_id, movie_id),
-        )
-        conn.commit()  # Permanent storing | If no commit then no data
- 
-    # Task 2
-    # Delete a movie from the db by getting the id from user
-    def delete_movie(self, movie_id):
-        cursor.execute("Delete from Movies Where MovieId = ?", movie_id)
-        conn.commit()
- 
+
  
 class DirectorService:
     pass
@@ -159,7 +122,7 @@ class Actor:
  
  
 def movie_menu():
-    movie_service = MovieService()
+    movie_service = MovieService(conn)
  
     while True:
         print(
@@ -229,5 +192,5 @@ if __name__ == "__main__":
             break
  
     # Clean up code
-    cursor.close()
-    conn.close()
+    # cursor.close()
+    # conn.close()
