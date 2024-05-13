@@ -12,3 +12,18 @@ Now, activate the scripts
 \myenv\Scripts\Activate.ps1
 Now add a .gitignore file to ignore the myenv folder
 Now create and Initialize a repository
+
+- what is pyodbc
+    - it is a driver (connectivity) btw python & db
+    - list of tuples we are getting from database
+- why we need cursor
+    - large amount of data row wise without buffering
+    - ram usage will be increased
+    - large data(time+RAM)
+    - Its like a bucket
+    - CRUD -> we use .execute
+    - Session mintainenance -> .close once quering is completed we close the connection
+- developer experience
+- seed data
+
+- what is instance variable
