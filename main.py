@@ -48,7 +48,9 @@
 
 import pyodbc
 from Entity.movie import Movie
+from Entity.director import Director
 from DAO.movie_service import MovieService
+from DAO.director_service import DirectorService
  
 
  
@@ -67,8 +69,7 @@ from DAO.movie_service import MovieService
 # Encapsulation
 
  
-class DirectorService:
-    pass
+
  
  
 class ActorService:
@@ -114,6 +115,7 @@ class Actor:
  
 class MainMenu:
     movie_service = MovieService()
+    director_service=DirectorService()
     def movie_menu(self):
         
     
@@ -152,7 +154,20 @@ class MainMenu:
     
     
     def director_menu(self):
-        pass
+        while True:
+            print(
+                """              
+            2. View all Movies
+            5. Back to main menu
+                    """
+            )
+            choice = int(input("Please choose from above options: "))
+
+            if choice == 2:
+                self.director_service.read_directors()
+            
+            elif choice == 5:
+                break
     
     
     def actor_menu(self):
