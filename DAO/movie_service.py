@@ -1,8 +1,6 @@
 # Encapsulation
-class MovieService:
-    def __init__(self, conn):
-        self.conn = conn
-        self.cursor = conn.cursor()
+from Util.DBconn import DBConnection
+class MovieService(DBConnection):
  
     def read_movies(self):
         try:
@@ -12,8 +10,7 @@ class MovieService:
                 print(movie)
         except Exception as e:
             print(e)
-        finally:
-            self.close()
+        
  
     # Task 1
     # Get the data from the user
@@ -27,8 +24,7 @@ class MovieService:
             self.conn.commit()  # Permanent storing | If no commit then no data
         except Exception as e:
             print(e)
-        finally:
-            self.close()
+       
  
     def update_movie(self, movie, movie_id):
         self.cursor.execute(
@@ -47,6 +43,4 @@ class MovieService:
         self.cursor.execute("Delete from Movies Where MovieId = ?", movie_id)
         self.conn.commit()
  
-    def close(self):
-        self.cursor.close()
-        self.conn.close()
+    

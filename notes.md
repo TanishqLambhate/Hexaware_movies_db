@@ -27,3 +27,16 @@ Now create and Initialize a repository
 - seed data
 
 - what is instance variable
+
+- Breaking into DAO and Entity
+- extensibility
+    - every body can build on template
+    - step by step process no confusion
+- modularity
+- readability
+
+- ctrl+p to search file
+
+when there is confusion which method to use then we use super
+
+when there is no constructor in child class then base class constructor will be called.
